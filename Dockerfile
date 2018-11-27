@@ -11,8 +11,9 @@ RUN touch /etc/nginx/secret.json
 
 ADD index.html /usr/share/auth0/auth0_login/index.html
 ADD config.js /usr/share/auth0/auth0_login/config.js
-
 RUN chmod a+r -R /usr/share/auth0/auth0_login
+
+ADD run /root/run
 
 ENV DOMAIN=
 ENV CLIENT_ID=
