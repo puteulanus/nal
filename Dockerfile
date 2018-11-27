@@ -6,14 +6,18 @@ RUN yum-config-manager --add-repo https://nginx-plus-repo.herokuapp.com && \
     
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD default.conf /etc/nginx/conf.d/default.conf
-ADD conf/rule.conf /etc/nginx/rule.conf
-ADD conf/secret.json /etc/nginx/secret.json
+ADD rule.conf /etc/nginx/rule.conf
+RUN touch /etc/nginx/secret.json
 
 ADD index.html /usr/share/auth0/auth0_login/index.html
-ADD conf/config.js /usr/share/auth0/auth0_login/config.js
+ADD config.js /usr/share/auth0/auth0_login/config.js
 
 RUN chmod a+r -R /usr/share/auth0/auth0_login
-    
+
+ENV DOMAIN=
+ENV CLIENT_ID=
+ENV PROXY_URL=http://172.17.0.1:8085/
+
 EXPOSE 80
 
-CMD nginx -c /etc/nginx/nginx.conf -g 'daemon off;'
+CMD /root/run
