@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 curl -sL https://$DOMAIN/.well-known/jwks.json > /etc/nginx/secret.json
 sed -i "s#domain: ''#domain: '$DOMAIN'#" /usr/share/auth0/auth0_login/config.js
