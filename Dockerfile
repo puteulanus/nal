@@ -2,7 +2,7 @@ FROM centos:centos7 as BUILD
 
 RUN yum-config-manager --add-repo https://nginx-plus-repo.herokuapp.com && \
     rpm --import 'https://nginx.org/keys/nginx_signing.key' && \
-    yum install -y nginx-plus gperftools-libs
+    yum install -y nginx-plus nginx-plus-module-lua gperftools-libs
 
 FROM alpine
 
@@ -18,9 +18,10 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
 # Copy Nginx
 COPY --from=BUILD /usr/sbin/nginx /usr/sbin/nginx
 COPY --from=BUILD /etc/nginx /etc/nginx
+COPY --from=BUILD /usr/lib64/nginx/modules /usr/lib64/nginx/modules
 COPY --from=BUILD /etc/logrotate.d /etc/logrotate.d
 COPY --from=BUILD /usr/share/nginx /usr/share/nginx
-RUN mkdir -p /var/cache/nginx /var/lib/nginx/state /var/log/nginx /usr/lib64/nginx/modules
+RUN mkdir -p /var/cache/nginx /var/lib/nginx/state /var/log/nginx
 
 # Copy libs
 COPY --from=BUILD /usr/lib64/libpcre.so.1 /usr/lib/libpcre.so.1
