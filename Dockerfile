@@ -20,7 +20,7 @@ COPY --from=BUILD /usr/sbin/nginx /usr/sbin/nginx
 COPY --from=BUILD /etc/nginx /etc/nginx
 COPY --from=BUILD /etc/logrotate.d /etc/logrotate.d
 COPY --from=BUILD /usr/share/nginx /usr/share/nginx
-RUN mkdir -p /var/{cache/nginx,lib/nginx/state,log/nginx} /usr/lib64/nginx/modules
+RUN mkdir -p /var/cache/nginx /var/lib/nginx/state /var/log/nginx /usr/lib64/nginx/modules
 
 # Copy libs
 COPY --from=BUILD /usr/lib64/libpcre.so.1 /usr/lib/libpcre.so.1
