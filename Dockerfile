@@ -11,7 +11,7 @@ RUN mkdir /root/lib64 && \
 
 FROM alpine
 
-ENV LD_LIBRARY_PATH /lib:/usr/lib
+ENV LD_LIBRARY_PATH=/usr/glibc-compat/lib;/lib:/usr/lib
 
 # Install glibc
 RUN apk --no-cache add ca-certificates curl
