@@ -21,8 +21,12 @@ function getQueryVariable(variable,isHash=true)
 window.addEventListener('load', function() {
 
     if (getQueryVariable("id_token")){
-        document.cookie = "auth_token=" + getQueryVariable("id_token") + ";path=/"
-        window.location.href=decodeURIComponent(getQueryVariable("from_url",false));
+        document.cookie = "auth_token=" + getQueryVariable("id_token") + ";path=/";
+        if(from_url = getQueryVariable("from_url",false)){
+              window.location.href = decodeURIComponent(from_url);
+        } else {
+              window.location.href = decodeURIComponent('/');
+        }
     }else{
         webAuth.authorize();
     }
