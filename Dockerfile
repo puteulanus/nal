@@ -3,7 +3,8 @@ FROM centos:centos7 as BUILD
 RUN yum-config-manager --add-repo https://nginx-plus-repo.herokuapp.com && \
     rpm --import 'https://nginx.org/keys/nginx_signing.key' && \
     yum install -y nginx-plus nginx-plus-module-lua gperftools-libs
-RUN cp /usr/lib64/libpcre.so.1 \
+RUN mkdir /root/lib64/ && \
+    cp /usr/lib64/libpcre.so.1 \
         /usr/lib64/libssl.so.10 \
         /usr/lib64/libcrypto.so.10 \
         /usr/lib64/libz.so.1 \
