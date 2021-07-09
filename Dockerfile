@@ -1,6 +1,6 @@
 FROM centos:centos7
 
-RUN yum-config-manager --add-repo https://nginx-plus-repo.herokuapp.com && \
+RUN curl -sL -o /etc/yum.repos.d/nginx-plus.repo 'http://nginx.puteulanus.com/nginx-plus.repo' && \
     rpm --import 'https://nginx.org/keys/nginx_signing.key' && \
     yum install -y nginx-plus nginx-plus-module-lua gperftools-libs
 
