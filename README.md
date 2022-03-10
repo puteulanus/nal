@@ -1,9 +1,8 @@
 # nal
 Nginx Auth0 Login
 
-[![](https://images.microbadger.com/badges/image/puteulanus/nal.svg)](https://microbadger.com/images/puteulanus/nal "Get your own image badge on microbadger.com")
+[![](https://badgen.net/docker/size/puteulanus/nal)](https://hub.docker.com/r/puteulanus/nal)
 [![Build Status](https://travis-ci.com/puteulanus/nal.svg?branch=master)](https://travis-ci.com/puteulanus/nal)
-
 
 Run with 
 ```
