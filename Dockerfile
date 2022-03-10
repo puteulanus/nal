@@ -2,7 +2,7 @@ FROM alpine:3.15
 
 RUN wget -O /etc/apk/keys/nginx_signing.rsa.pub https://cs.nginx.com/static/keys/nginx_signing.rsa.pub && \
     printf "http://nginx.puteulanus.com/plus/alpine/v`egrep -o '^[0-9]+\.[0-9]+' /etc/alpine-release`/main\n" | tee -a /etc/apk/repositories && \
-    apk add nginx-plus nginx-plus-module-lua gperftools-libs
+    apk add nginx-plus nginx-plus-module-lua
 
 # Add config
 ADD nginx.conf /etc/nginx/nginx.conf
