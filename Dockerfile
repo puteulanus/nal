@@ -1,8 +1,8 @@
-FROM centos:centos7
+FROM alpine:3.15
 
-RUN curl -sL -o /etc/yum.repos.d/nginx-plus.repo 'http://nginx.puteulanus.com/nginx-plus.repo' && \
-    rpm --import 'https://nginx.org/keys/nginx_signing.key' && \
-    yum install -y nginx-plus nginx-plus-module-lua gperftools-libs
+RUN wget -O /etc/apk/keys/nginx_signing.rsa.pub https://cs.nginx.com/static/keys/nginx_signing.rsa.pub && \
+    printf "http://nginx.puteulanus.com/plus/alpine/v`egrep -o '^[0-9]+\.[0-9]+' /etc/alpine-release`/main\n" | sudo tee -a /etc/apk/repositories && \
+    apk add nginx-plus nginx-plus-module-lua gperftools-libs
 
 # Add config
 ADD nginx.conf /etc/nginx/nginx.conf
