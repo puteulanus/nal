@@ -1,7 +1,8 @@
 # nal
 Nginx Auth0 Login
 
-[![](https://badgen.net/docker/size/puteulanus/nal)](https://hub.docker.com/r/puteulanus/nal)
+[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/puteulanus/nal/latest)](https://hub.docker.com/r/puteulanus/nal)
+[![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/puteulanus/nal/latest?label=nginx%20version)](https://docs.nginx.com/nginx/releases)
 [![Build Status](https://travis-ci.com/puteulanus/nal.svg?branch=master)](https://travis-ci.com/puteulanus/nal)
 
 Run with 
