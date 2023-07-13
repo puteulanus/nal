@@ -16,7 +16,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t puteulanus/nal .
-          VER=$(docker run -it puteulanus/nal nginx -v | awk -F '[-)]' '{print $(NF-1)}')
+          VER=$(docker run puteulanus/nal nginx -v | awk -F '[-)]' '{print $(NF-1)}')
           docker tag puteulanus/nal puteulanus/nal:$VER
 
       - name: Login to DockerHub
