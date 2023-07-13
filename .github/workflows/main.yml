@@ -19,8 +19,7 @@ jobs:
           CONTAINER_ID=$(docker run -d puteulanus/nal)
           VER=$(docker exec $CONTAINER_ID nginx -v 2>&1 | awk -F '[-)]' '{print $(NF-1)}')
           echo $VER
-          docker tag puteulanus/nal
-          docker tag puteulanus/nal:$VER
+          docker tag puteulanus/nal puteulanus/nal:$VER
           docker stop $CONTAINER_ID
 
       - name: Login to DockerHub
